@@ -1,0 +1,26 @@
+name: Check website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get project files
+        uses: actions/checkout@v4
+
+      - name: Check index.html exists
+        run: test -f index.html
+
+      - name: Check webpage has a heading
+        run: grep -q "<h1>" index.html
+
+      - name: Check Bash scripts
+        run: |
+          bash -n deploy-site.sh
+          bash -n publish-site.sh
+          bash -n sync-and-deploy.sh
