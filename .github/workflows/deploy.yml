@@ -20,7 +20,7 @@ jobs:
       - name: Get temporary AWS permission
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: PASTE-YOUR-ROLE-ARN-HERE
+          role-to-assume: arn:aws:iam::894196686483:role/github-actions-neinei-deploy
           aws-region: ap-southeast-2
 
       - name: Upload website to S3
